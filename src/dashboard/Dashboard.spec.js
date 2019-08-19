@@ -18,7 +18,19 @@ describe("<Dashboard />", () => {
 describe("toggleClosed", () => {
     it('Should pass "closed" into Display', () => {
         const { getByText, queryByText } = render(<Dashboard />);
+        expect(queryByText("Close Gate")).toBeTruthy();
         fireEvent.click(getByText("Close Gate"));
+        expect(queryByText("Closed")).toBeTruthy();
+    });
+});
+
+describe("toggleLocked", () => {
+    it('Should pass "Locked" into Display', () => {
+        const { getByText, queryByText } = render(<Dashboard />);
+        expect(queryByText("Close Gate")).toBeTruthy();
+        fireEvent.click(getByText("Close Gate"));
+        fireEvent.click(getByText("Lock Gate"));
+        expect(queryByText("Locked")).toBeTruthy();
         expect(queryByText("Closed")).toBeTruthy();
     });
 });
